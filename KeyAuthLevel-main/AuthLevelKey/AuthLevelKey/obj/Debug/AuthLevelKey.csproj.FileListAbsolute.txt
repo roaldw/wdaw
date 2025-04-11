@@ -1,0 +1,11 @@
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\bin\Debug\AuthLevelKey.exe.config
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\bin\Debug\AuthLevelKey.exe
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\bin\Debug\AuthLevelKey.pdb
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.csproj.AssemblyReference.cache
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.Form1.resources
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.Form2.resources
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.Properties.Resources.resources
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.csproj.GenerateResource.cache
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.csproj.CoreCompileInputs.cache
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.exe
+C:\Users\NoMoreLife\source\repos\AuthLevelKey\AuthLevelKey\obj\Debug\AuthLevelKey.pdb
