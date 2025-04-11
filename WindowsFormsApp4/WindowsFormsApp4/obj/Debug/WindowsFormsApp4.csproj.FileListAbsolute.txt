@@ -1,0 +1,16 @@
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe.config
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.pdb
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\Guna.UI2.dll
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.AssemblyReference.cache
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Form1.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Properties.Resources.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.GenerateResource.cache
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.CoreCompileInputs.cache
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsF.D9406B00.Up2Date
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Loading.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Executer.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Setting.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\cxapis.dll
