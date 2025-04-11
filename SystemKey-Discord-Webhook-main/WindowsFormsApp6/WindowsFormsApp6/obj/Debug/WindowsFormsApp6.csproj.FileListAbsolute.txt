@@ -1,0 +1,13 @@
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\bin\Debug\WindowsFormsApp6.exe.config
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\bin\Debug\WindowsFormsApp6.exe
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\bin\Debug\WindowsFormsApp6.pdb
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\bin\Debug\System.CodeDom.dll
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\bin\Debug\System.CodeDom.xml
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.csproj.AssemblyReference.cache
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Form1.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Properties.Resources.resources
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.csproj.GenerateResource.cache
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.csproj.CoreCompileInputs.cache
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsF.CC6A6B00.Up2Date
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.exe
+C:\Users\NoMoreLife\source\repos\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.pdb
