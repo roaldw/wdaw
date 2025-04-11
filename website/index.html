@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nomorelife</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #5e72e4;
+            --primary-light: #8392ef;
+            --primary-dark: #324cdd;
+            --secondary-color: #f7fafc;
+            --success-color: #2dce89;
+            --warning-color: #fb6340;
+            --danger-color: #f5365c;
+            --text-color: #32325d;
+            --text-muted: #8898aa;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --shadow-strong: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 10px auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px var(--shadow-color);
+            overflow: hidden;
+        }
+        
+        .app-header {
+            background: linear-gradient(87deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-strong);
+        }
+        
+        .app-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .app-content {
+            padding: 15px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            background-color: white;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            background-color: white;
+            border: none;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+            min-width: 100px;
+            font-size: 0.9rem;
+        }
+        
+        .tab:hover {
+            color: var(--primary-color);
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.1);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            box-shadow: 0 3px 6px var(--shadow-color);
+            white-space: nowrap;
+            margin: 5px 0;
+        }
+        
+        .btn i {
+            margin-left: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-strong);
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #26af74;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-strong);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #e2294f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-strong);
+        }
+        
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background-color: #f2522a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-strong);
+        }
+        
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-container .form-group {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 0;
+        }
+        
+        .search-container .btn {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            padding: 10px 8px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            background-color: #f8f9fa;
+            white-space: nowrap;
+        }
+        
+        th:first-child {
+            border-top-right-radius: 8px;
+        }
+        
+        th:last-child {
+            border-top-left-radius: 8px;
+        }
+        
+        tr:last-child td:first-child {
+            border-bottom-right-radius: 8px;
+        }
+        
+        tr:last-child td:last-child {
+            border-bottom-left-radius: 8px;
+        }
+        
+        tr:hover {
+            background-color: #f7fafc;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .actions .btn {
+            padding: 6px 10px;
+            min-width: auto;
+            margin: 2px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            padding: 15px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            animation: slideUp 0.3s ease forwards;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .modal-body {
+            padding: 15px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .invoice {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            background-color: white;
+        }
+        
+        .invoice-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .invoice-body {
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        
+        .print-only {
+            display: none;
+        }
+        
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .print-only {
+                display: block;
+            }
+            
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            
+            .invoice {
+                border: none;
+                box-shadow: none;
+            }
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .badge-success {
+            background-color: rgba(45, 206, 137, 0.1);
+            color: var(--success-color);
+        }
+        
+        .badge-warning {
+            background-color: rgba(251, 99, 64, 0.1);
+            color: var(--warning-color);
+        }
+        
+        .badge-danger {
+            background-color: rgba(245, 54, 92, 0.1);
+            color: var(--danger-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .app-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .app-content {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 12px;
+            }
+            
+            .tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: 1 0 33.33%;
+                font-size: 0.8rem;
+                padding: 10px 5px;
+            }
+            
+            .btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            @media (max-width: 480px) {
+                .hide-on-mobile {
+                    display: none;
+                }
+                
+                .tab {
+                    flex: 1 0 100%;
+                }
+                
+                .actions {
+                    flex-direction: row;
+                }
+                
+                .btn {
+                    padding: 6px 10px;
+                }
+                
+                .invoice-header {
+                    text-align: center;
+                }
+            }
+        }
+        
+        .backup-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .invoice {
+                padding: 10px;
+            }
+            
+            .invoice-header div {
+                margin-bottom: 15px;
+            }
+            
+            .invoice-footer {
+                text-align: center;
+            }
+            
+            .invoice-footer .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        .filter-container {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .filter-container .form-group {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-container .form-group {
+                max-width: 100%;
+            }
+        }
+        
+        /* Estilos para adicionar múltiplos clientes */
+        .bulk-add-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bulk-instructions {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        .bulk-instructions h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .bulk-instructions ol {
+            padding-right: 20px;
+        }
+        
+        .bulk-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .bulk-textarea {
+            min-height: 200px;
+            font-family: monospace;
+        }
+        
+        .bulk-preview {
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .bulk-preview h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .bulk-preview-table {
+            width: 100%;
+            font-size: 0.85rem;
+        }
+        
+        .bulk-preview-table th {
+            background-color: #f1f3f5;
+            padding: 8px;
+        }
+        
+        .bulk-preview-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .bulk-errors {
+            color: var(--danger-color);
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .bulk-success {
+            color: var(--success-color);
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .btn-info {
+    background-color: #11cdef;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #0da5c0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-strong);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <h1>Headshot Network</h1>
+        </div>
+        
+        <div class="app-content">
+            <div class="tabs no-print">
+                <div class="tab active" data-tab="clients">
+                    <i class="fas fa-users"></i> Lista de Clientes
+                </div>
+                <div class="tab" data-tab="add-client">
+                    <i class="fas fa-user-plus"></i> Adicionar Cliente
+                </div>
+                <div class="tab" data-tab="bulk-add">
+                    <i class="fas fa-users-cog"></i> Adicionar Múltiplos Clientes
+                </div>
+                <div class="tab" data-tab="invoices">
+                    <i class="fas fa-file-invoice"></i> Faturas
+                </div>
+            </div>
+            
+            <div id="clients" class="tab-content active">
+                <div class="card">
+                    <div class="search-container no-print">
+                        <div class="form-group">
+                            <label for="search">Buscar cliente:</label>
+                            <input type="text" id="search" placeholder="Digite o nome do cliente...">
+                        </div>
+                        <button class="btn btn-primary" onclick="searchClients()">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                        <button class="btn btn-warning" onclick="resetSearch()">
+                            <i class="fas fa-redo"></i> Resetar
+                        </button>
+                    </div>
+                    
+                    <div class="filter-container no-print" style="margin-top: 15px;">
+                        <div class="form-group">
+                            <label for="filterMonth">Filtrar por mês de pagamento:</label>
+                            <select id="filterMonth" onchange="filterByMonth()">
+                                <option value="0">Mostrar Todos</option>
+                                <option value="1">Janeiro</option>
+                                <option value="2">Fevereiro</option>
+                                <option value="3">Março</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Maio</option>
+                                <option value="6">Junho</option>
+                                <option value="7">Julho</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table id="clientsTable">
+                            <thead>
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>Nome do Cliente</th>
+                                    <th>Valor Pago</th>
+                                    <th>Data de Pagamento</th>
+                                    <th>Data de Renovação</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientsList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="add-client" class="tab-content">
+                <div class="card">
+                    <h2><i class="fas fa-user-plus"></i> Adicionar Novo Cliente</h2>
+                    <div class="form-group">
+                        <label for="clientName">Nome do Cliente:</label>
+                        <input type="text" id="clientName" required placeholder="Digite o nome do cliente">
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentAmount">Valor Pago:</label>
+                        <input type="number" id="paymentAmount" required placeholder="Digite o valor pago">
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentDate">Data de Pagamento:</label>
+                        <input type="date" id="paymentDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="renewalDate">Data de Renovação:</label>
+                        <input type="date" id="renewalDate" required>
+                    </div>
+                    <button class="btn btn-primary" onclick="addClient()">
+                        <i class="fas fa-plus"></i> Adicionar Cliente
+                    </button>
+                </div>
+            </div>
+            
+            <div id="bulk-add" class="tab-content">
+                <div class="card bulk-add-container">
+                    <h2><i class="fas fa-users-cog"></i> Adicionar Múltiplos Clientes</h2>
+                    
+                    <div class="bulk-instructions">
+                        <h3><i class="fas fa-info-circle"></i> Instruções:</h3>
+                        <ol>
+                            <li>Insira os dados dos clientes no campo abaixo, um cliente por linha.</li>
+                            <li>Os dados devem estar no formato: <strong>Nome do Cliente, Valor, Data de Pagamento (AAAA-MM-DD), Data de Renovação (AAAA-MM-DD)</strong></li>
+                            <li>Exemplo: <code>João Silva, 100, 2023-06-15, 2023-07-15</code></li>
+                            <li>Você pode copiar os dados do Excel ou de um arquivo de texto.</li>
+                            <li>Clique em "Visualizar" para verificar os dados antes de adicionar.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bulkData">Dados dos Clientes:</label>
+                        <textarea id="bulkData" class="bulk-textarea" placeholder="Insira os dados dos clientes aqui, um por linha"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="defaultAmount">Valor Padrão (se não especificado):</label>
+                        <input type="number" id="defaultAmount" placeholder="Valor padrão para clientes">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="defaultDuration">Duração Padrão (em dias):</label>
+                        <input type="number" id="defaultDuration" value="30" placeholder="Duração da assinatura">
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="btn btn-primary" onclick="previewBulkData()">
+                            <i class="fas fa-eye"></i> Visualizar
+                        </button>
+                        <button class="btn btn-success" onclick="addBulkClients()" id="addBulkBtn" disabled>
+                            <i class="fas fa-plus-circle"></i> Adicionar Clientes
+                        </button>
+                        <button class="btn btn-warning" onclick="clearBulkData()">
+                            <i class="fas fa-trash"></i> Limpar Dados
+                        </button>
+                    </div>
+                    
+                    <div id="bulkPreview" class="bulk-preview" style="display: none;">
+                        <h4><i class="fas fa-list"></i> Visualização dos Dados</h4>
+                        <div class="table-responsive">
+                            <table class="bulk-preview-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome do Cliente</th>
+                                        <th>Valor</th>
+                                        <th>Data de Pagamento</th>
+                                        <th>Data de Renovação</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bulkPreviewBody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="bulkErrors" class="bulk-errors"></div>
+                        <div id="bulkSuccess" class="bulk-success"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="invoices" class="tab-content">
+                <div id="invoicesList">
+                    <div class="card">
+                        <p><i class="fas fa-info-circle"></i> Selecione "Imprimir Fatura" no menu de clientes para ver uma fatura individual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="editClientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Editar Cliente</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editClientName">Nome do Cliente:</label>
+                    <input type="text" id="editClientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editPaymentAmount">Valor Pago:</label>
+                    <input type="number" id="editPaymentAmount" required>
+                </div>
+                <div class="form-group">
+                    <label for="editPaymentDate">Data de Pagamento:</label>
+                    <input type="date" id="editPaymentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="editRenewalDate">Data de Renovação:</label>
+                    <input type="date" id="editRenewalDate" required>
+                </div>
+                <input type="hidden" id="editClientId">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="updateClient()">
+                    <i class="fas fa-save"></i> Salvar Alterações
+                </button>
+                <button class="btn btn-danger" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <template id="invoiceTemplate">
+        <div class="invoice">
+            <div class="invoice-header">
+                <div>
+                    <h2><i class="fas fa-file-invoice"></i> Fatura</h2>
+                    <p>Número da Fatura: <span class="invoice-number"></span></p>
+                    <p>Data: <span class="invoice-date"></span></p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-user"></i> Dados do Cliente</h3>
+                    <p>Nome: <span class="client-name"></span></p>
+                </div>
+            </div>
+            <div class="invoice-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Data de Pagamento</th>
+                            <th>Data de Renovação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Taxa de Assinatura</td>
+                            <td class="payment-amount"></td>
+                            <td class="payment-date"></td>
+                            <td class="renewal-date"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="invoice-footer">
+                <p><i class="fas fa-heart"></i>By wissam mohammad</p>
+                <p><i class="fas fa-phone"></i> Para dúvidas, entre em contato:</p>
+                <p>📞 +961 70 061 766</p>
+                <p>📞 +961 XX XXX XXX</p>
+                
+                <button class="btn btn-primary no-print" onclick="window.print()">
+                    <i class="fas fa-print"></i> Imprimir Fatura
+                </button>
+                <button class="btn btn-warning no-print" onclick="goToTab('clients')">
+                    <i class="fas fa-arrow-right"></i> Voltar para Lista
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        function filterByMonth() {
+            const selectedMonth = parseInt(document.getElementById('filterMonth').value);
+            
+            if (selectedMonth === 0) {
+                displayClients();
+                return;
+            }
+            
+            const filteredClients = clients.filter(client => {
+                const paymentDate = new Date(client.paymentDate);
+                return (paymentDate.getMonth() + 1) === selectedMonth;
+            });
+            
+            displayClients(filteredClients);
+        }
+
+        function getMonthName(monthNumber) {
+            const months = [
+                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+            return months[monthNumber - 1] || "";
+        }
+
+        let clients = JSON.parse(localStorage.getItem('clients')) || [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            displayClients();
+            
+            document.getElementById('paymentDate').valueAsDate = new Date();
+            
+            const nextMonth = new Date();
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            document.getElementById('renewalDate').valueAsDate = nextMonth;
+            
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    activateTab(tabId);
+                });
+            });
+            
+            if (typeof FontAwesome === 'undefined') {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css';
+                document.head.appendChild(link);
+            }
+            
+            const fontLink = document.createElement('link');
+            fontLink.rel = 'stylesheet';
+            fontLink.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap';
+            document.head.appendChild(fontLink);
+        });
+        
+        function activateTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        function goToTab(tabId) {
+            activateTab(tabId);
+        }
+        
+        function addClient() {
+            const clientName = document.getElementById('clientName').value;
+            const paymentAmount = document.getElementById('paymentAmount').value;
+            const paymentDate = document.getElementById('paymentDate').value;
+            const renewalDate = document.getElementById('renewalDate').value;
+            
+            if (!clientName || !paymentAmount || !paymentDate || !renewalDate) {
+                alert('Por favor, preencha todos os campos obrigatórios');
+                return;
+            }
+            
+            const client = {
+                id: Date.now(),
+                name: clientName,
+                amount: paymentAmount,
+                paymentDate: paymentDate,
+                renewalDate: renewalDate,
+                unpaidMonths: 0 
+            };
+            
+            clients.push(client);
+            saveClients();
+            displayClients();
+            
+            document.getElementById('clientName').value = '';
+            document.getElementById('paymentAmount').value = '';
+            
+            goToTab('clients');
+        }
+        
+        function displayClients(clientsToDisplay = clients) {
+            const clientsList = document.getElementById('clientsList');
+            clientsList.innerHTML = '';
+            
+            if (clientsToDisplay.length === 0) {
+                clientsList.innerHTML = '<tr><td colspan="7" style="text-align: center;">Nenhum cliente cadastrado</td></tr>';
+                return;
+            }
+            
+            clientsToDisplay.forEach((client, index) => {
+                const row = document.createElement('tr');
+                
+                const paymentDate = new Date(client.paymentDate);
+                const renewalDate = new Date(client.renewalDate);
+                
+                const statusInfo = getRenewalStatus(client.renewalDate, client.unpaidMonths || 0);
+                const statusBadge = `<span class="badge ${statusInfo.class}">${statusInfo.label}</span>`;
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${client.name}</td>
+                    <td>${client.amount}</td>
+                    <td>${formatDate(paymentDate)}</td>
+                    <td>${formatDate(renewalDate)}</td>
+                    <td>${statusBadge}</td>
+                    <td class="actions">
+                        <button class="btn btn-success" onclick="printInvoice(${client.id})">
+                            <i class="fas fa-print"></i>
+                        </button>
+                        <button class="btn btn-primary" onclick="editClient(${client.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteClient(${client.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="btn btn-warning" onclick="increaseUnpaidMonths(${client.id})" title="Aumentar meses não pagos">
+                            <i class="fas fa-plus"></i> (${client.unpaidMonths || 0})
+                        </button>
+                        <button class="btn btn-info" onclick="decreaseUnpaidMonths(${client.id})" title="Diminuir meses não pagos">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </td>
+                `;
+                
+                clientsList.appendChild(row);
+            });
+        }
+
+        function increaseUnpaidMonths(clientId) {
+            const clientIndex = clients.findIndex(c => c.id === clientId);
+            if (clientIndex !== -1) {
+                clients[clientIndex].unpaidMonths = (clients[clientIndex].unpaidMonths || 0) + 1;
+                saveClients();
+                displayClients();
+            }
+        }
+
+        function decreaseUnpaidMonths(clientId) {
+            const clientIndex = clients.findIndex(c => c.id === clientId);
+            if (clientIndex !== -1 && (clients[clientIndex].unpaidMonths || 0) > 0) {
+                clients[clientIndex].unpaidMonths = clients[clientIndex].unpaidMonths - 1;
+                saveClients();
+                displayClients();
+            } else {
+                alert('Não é possível diminuir abaixo de zero');
+            }
+        }
+        
+        function formatDate(date) {
+            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        }
+        
+        function saveClients() {
+            localStorage.setItem('clients', JSON.stringify(clients));
+        }
+        
+        function deleteClient(id) {
+            if (confirm('Tem certeza que deseja excluir este cliente?')) {
+                clients = clients.filter(client => client.id !== id);
+                saveClients();
+                displayClients();
+            }
+        }
+        
+        function editClient(id) {
+            const client = clients.find(c => c.id === id);
+            
+            if (client) {
+                document.getElementById('editClientId').value = client.id;
+                document.getElementById('editClientName').value = client.name;
+                document.getElementById('editPaymentAmount').value = client.amount;
+                document.getElementById('editPaymentDate').value = client.paymentDate;
+                document.getElementById('editRenewalDate').value = client.renewalDate;
+                
+                document.getElementById('editClientModal').style.display = 'flex';
+            }
+        }
+        
+        function closeEditModal() {
+            document.getElementById('editClientModal').style.display = 'none';
+        }
+        
+        function updateClient() {
+            const id = parseInt(document.getElementById('editClientId').value);
+            const name = document.getElementById('editClientName').value;
+            const amount = document.getElementById('editPaymentAmount').value;
+        }
+            
